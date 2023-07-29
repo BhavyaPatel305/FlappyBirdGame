@@ -1,0 +1,153 @@
+[
+    {
+        "label": "width",
+        "importPath": "turtle",
+        "description": "turtle",
+        "isExtraImport": true,
+        "detail": "turtle",
+        "documentation": {}
+    },
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "pygame.locals",
+        "description": "pygame.locals",
+        "isExtraImport": true,
+        "detail": "pygame.locals",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN_WIDTH",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "SCREEN_WIDTH = 1400\nSCREEN_HEIGHT = 700\nSCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN_HEIGHT",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "SCREEN_HEIGHT = 700\nSCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "SCREEN",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "SCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_SOUNDS",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_SOUNDS = {}\n# Functions\n# Main Program",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES[\"background\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES[\"background\"] =  pygame.image.load(\"image/background.png\").convert_alpha()\nGAME_IMAGES[\"base\"] =  pygame.image.load(\"image/base.png\").convert_alpha()\n# Here our player is bird\nGAME_IMAGES[\"player\"] =  pygame.image.load(\"image/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES[\"base\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES[\"base\"] =  pygame.image.load(\"image/base.png\").convert_alpha()\n# Here our player is bird\nGAME_IMAGES[\"player\"] =  pygame.image.load(\"image/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES[\"player\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES[\"player\"] =  pygame.image.load(\"image/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),\n    pygame.image.load(\"image/4.png\").convert_alpha(),\n    pygame.image.load(\"image/5.png\").convert_alpha(),",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES[\"message\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),\n    pygame.image.load(\"image/4.png\").convert_alpha(),\n    pygame.image.load(\"image/5.png\").convert_alpha(),\n    pygame.image.load(\"image/6.png\").convert_alpha(),",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES[\"numbers\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),\n    pygame.image.load(\"image/4.png\").convert_alpha(),\n    pygame.image.load(\"image/5.png\").convert_alpha(),\n    pygame.image.load(\"image/6.png\").convert_alpha(),\n    pygame.image.load(\"image/7.png\").convert_alpha(),\n    pygame.image.load(\"image/8.png\").convert_alpha(),",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_IMAGES[\"pipe\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_IMAGES[\"pipe\"] =  (\n    # Upper pipe: Just give 180 degree rotation\n    pygame.transform.rotate(pygame.image.load(\"image/pipe.png\").convert_alpha(), 180),\n    # Lower pipe\n    pygame.image.load(\"image/pipe.png\").convert_alpha()\n)\n# Add all audios as key value pairs to dictionary GAME_SOUNDS\nGAME_SOUNDS[\"die\"] = pygame.mixer.Sound(\"audio/die.mp3\")\nGAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_SOUNDS[\"die\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_SOUNDS[\"die\"] = pygame.mixer.Sound(\"audio/die.mp3\")\nGAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_SOUNDS[\"fly\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "GAME_SOUNDS[\"point\"]",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "GAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "detail": "main",
+        "documentation": {}
+    }
+]
