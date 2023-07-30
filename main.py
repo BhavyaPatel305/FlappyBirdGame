@@ -21,7 +21,11 @@ SCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 GAME_IMAGES = {}
 # To make group of all audios as dictionary
 GAME_SOUNDS = {}
-
+# Number of frames per second
+# If a lot of frames pass though in front of our eyes then we think that it is moving smoothly
+# But more the FPS, more load on computer
+# but if load on computer less than game experience will be bad
+FPS = 30
 
 # Coordinates of bird
 playerX = SCREEN_WIDTH/5
@@ -134,6 +138,11 @@ def gameLoop():
     # height of the pipe
     pipeHeight = GAME_IMAGES["pipe"][0].get_height()
     
+    # Coordinates of bird
+    # We define it once again as it gives error or we can even use global keyword
+    playerX = SCREEN_WIDTH/5
+    playerY = SCREEN_HEIGHT/2
+    
     # If I press ^ arrow or w, the player should move upwards
     while True:
         for x in pygame.event.get():
@@ -150,6 +159,33 @@ def gameLoop():
                         playerFlying = True
                         # Along with flying, also play sound of flying
                         GAME_SOUNDS["fly"].play()
+        # But by just changing speed, we cannot move the bird
+        # We need to write logic for that
+        
+        # Moving player up
+        
+        playerY = playerY + playerSpeedY
+        # If we press ^ arrow key once, then playerFlying = True
+        # Now we set it to false as we have added playerSpeedY once
+        # so now once again set it to false, as we don't want it to keep flying
+        if playerFlying == True:
+            playerFlying = False
+            
+        # Pulling player down
+        
+        # If playerSpeedY is less than its max possible speed and it is not flying right now
+        # then pull it down
+        if (playerSpeedY < playerMaxSpeed) and not playerFlying:
+            # We add acc to player speed, so it comes down
+            playerSpeedY = playerSpeedY + playerAccY
+            
+        # Moving the pipes
+        
+        # for this we will use zip function
+        for upperPipe, lowerPipe in zip(upperPipes, lowerPipes):
+            upperPipe["x"] = upperPipe["x"] - pipeSpeedX
+            lowerPipe["x"] = lowerPipe["x"] - pipeSpeedX
+        
         # Blit on screen
         
         # 1 Background
@@ -160,10 +196,21 @@ def gameLoop():
 
         # 3 bird
         SCREEN.blit(GAME_IMAGES["player"], (playerX, playerY))
+        
+        # Let's blit the pipes on screen
+        for upperPipe, lowerPipe in zip(upperPipes, lowerPipes):
+            # blit the upper pipe(Inverted pipe)
+            SCREEN.blit(GAME_IMAGES["pipe"][0], (upperPipe["x"], upperPipe["y"] ))
+            # blit the lower pipe(Vertical pipe)
+            SCREEN.blit(GAME_IMAGES["pipe"][1], (lowerPipe["x"], lowerPipe["y"] ))
+        
     
         # update the screen
         pygame.display.update()
         
+        # implementing FPS
+        # By passing this command, pygame understands that it has to pass these many frames
+        pygame.time.Clock().tick(FPS)
     
     
 
