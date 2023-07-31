@@ -195,6 +195,31 @@ def gameLoop():
             upperPipes.pop(0)
             lowerPipes.pop(0)
         
+        # Changing the score
+        # Here we ue the logic that if center if bird passes ahead of center of pipe then we increment the score
+        # To get center: Current x coordinate of bird + (Width of bird)/2
+        playerCenterX = playerX + (GAME_IMAGES["player"].get_width()/2)
+        
+        # Similarly we find pipe center
+        # But we use for loop to check center for each and every pipe
+        for pipe in upperPipes:
+            pipeCenterX = pipe["x"] + (GAME_IMAGES["pipe"][0].get_width()/2)
+            
+            if pipeCenterX <= playerCenterX < playerX + abs(pipeSpeedX):
+                score += 1
+                # Play point sound which signifies that score has increased
+                GAME_SOUNDS["point"].play()
+                
+        # Player Death
+        # die variable stores a boolean value, if player dead or not
+        if isHit(playerX, playerY, upperPipes, lowerPipes):
+            # If bird dies, play die sound
+            GAME_SOUNDS["die"].play()
+            # After playing sound, wait for sometime
+            pygame.time.wait(2000)
+            # After that return, it means that it will go where gameLoop() method was called 
+            return        
+        
         # Blit on screen
         
         # 1 Background
@@ -269,7 +294,42 @@ def getRandomPipes():
     ]
     return pipe
     
+# Method to check if our player has hit pipes or not
+# returns True if the player has hit else False
+def isHit(playerX, playerY, upperPipes, lowerPipes):  
+     # Get the height of the pipe image
+    pipeHeight = GAME_IMAGES["pipe"][0].get_height()
+    # Get the width of the pipe image
+    pipeWidth = GAME_IMAGES["pipe"][0].get_width()
+    # Get the height of the player image
+    playerHeight = GAME_IMAGES["player"].get_height()
+    # Get the width of the player image
+    playerWidth = GAME_IMAGES["player"].get_width()
     
+    # 1: HIT CEILING OR BASE
+    
+    # Which means y coordinate of player < 0 or it goes below the base
+    # here y coordinate is the upper left corner of bird image
+    # But for checking collision with base, we want to check for lower left corner of bird image
+    # so we add bird height to it's y coordinate
+    if playerY < 0 or (playerY + playerHeight) >= (SCREEN_HEIGHT - GAME_IMAGES["base"].get_height()):
+        return True
+    
+    # 2: HIT WITH UPPER PIPES
+    for pipe in upperPipes:
+        # Take pipe's y coordinate and add pipe height to it
+        if (playerY < pipe["y"] + pipeHeight) and ((pipe["x"] - playerWidth) < playerX < (pipe["x"] + pipeWidth)):
+            return True
+        
+    # 3: HIT WITH LOWER PIPES
+    for pipe in lowerPipes:
+        # Take pipe's y coordinate and add pipe height to it
+        if (playerY + playerHeight > pipe["y"]) and ((pipe["x"] - playerWidth) < playerX < (pipe["x"] + pipeWidth)):
+            return True
+    
+    # 4: DIDN'T HIT ANYTHING
+    return False
+        
     
     
 
@@ -332,9 +392,10 @@ baseY = SCREEN_HEIGHT - GAME_IMAGES["base"].get_height()
 messageX = SCREEN_WIDTH/2 - GAME_IMAGES["message"].get_width()/2
 messageY = SCREEN_HEIGHT/2 - GAME_IMAGES["message"].get_height()/2
 
-# Call welcomeScreen() method to display welcome message
-welcomeScreen()
-# Method that contains all the logic of the game
-# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe
-gameLoop()
-
+# If gameLoop finishes, it will again go back to welcome screen
+while True:
+    # Call welcomeScreen() method to display welcome message
+    welcomeScreen()
+    # Method that contains all the logic of the game
+    # Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe
+    gameLoop()

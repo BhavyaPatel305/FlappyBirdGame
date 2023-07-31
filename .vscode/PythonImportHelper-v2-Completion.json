@@ -69,6 +69,15 @@
         "documentation": {}
     },
     {
+        "label": "isHit",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def isHit(playerX, playerY, upperPipes, lowerPipes):  \n     # Get the height of the pipe image\n    pipeHeight = GAME_IMAGES[\"pipe\"][0].get_height()\n    # Get the width of the pipe image\n    pipeWidth = GAME_IMAGES[\"pipe\"][0].get_width()\n    # Get the height of the player image\n    playerHeight = GAME_IMAGES[\"player\"].get_height()\n    # Get the width of the player image\n    playerWidth = GAME_IMAGES[\"player\"].get_width()\n    # 1: HIT CEILING OR BASE",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "SCREEN_WIDTH",
         "kind": 5,
         "importPath": "main",
@@ -226,7 +235,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "baseX = 0\nbaseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "peekOfCode": "baseX = 0\nbaseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# If gameLoop finishes, it will again go back to welcome screen\nwhile True:\n    # Call welcomeScreen() method to display welcome message\n    welcomeScreen()\n    # Method that contains all the logic of the game",
         "detail": "main",
         "documentation": {}
     },
@@ -235,7 +244,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "baseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "peekOfCode": "baseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# If gameLoop finishes, it will again go back to welcome screen\nwhile True:\n    # Call welcomeScreen() method to display welcome message\n    welcomeScreen()\n    # Method that contains all the logic of the game\n    # Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe",
         "detail": "main",
         "documentation": {}
     },
@@ -244,7 +253,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "messageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "peekOfCode": "messageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# If gameLoop finishes, it will again go back to welcome screen\nwhile True:\n    # Call welcomeScreen() method to display welcome message\n    welcomeScreen()\n    # Method that contains all the logic of the game\n    # Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\n    gameLoop()",
         "detail": "main",
         "documentation": {}
     },
@@ -253,7 +262,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "messageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "peekOfCode": "messageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# If gameLoop finishes, it will again go back to welcome screen\nwhile True:\n    # Call welcomeScreen() method to display welcome message\n    welcomeScreen()\n    # Method that contains all the logic of the game\n    # Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\n    gameLoop()",
         "detail": "main",
         "documentation": {}
     }
