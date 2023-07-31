@@ -25,11 +25,55 @@
         "documentation": {}
     },
     {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "randint",
+        "importPath": "random",
+        "description": "random",
+        "isExtraImport": true,
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "welcomeScreen",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def welcomeScreen():\n    # Now since when we run this file, a screen appears for a second and then disappears\n    # So to prevent that, we will use an infinite while loop\n    while True:\n        # 1 Background\n        SCREEN.blit(GAME_IMAGES[\"background\"], (0,0))\n        # 2 Base\n        SCREEN.blit(GAME_IMAGES[\"base\"], (baseX, baseY))\n        # 3 bird\n        SCREEN.blit(GAME_IMAGES[\"player\"], (playerX, playerY))",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "gameLoop",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def gameLoop():\n    # 1st we need to create pipes\n    # Say 1 pipe is combination of 1 vertical and 1 inverted pipe\n    # Lets create 3 such pipes\n    # We create a method named getRandomPipe() which will give us random pair of pipes\n    newPipe1 = getRandomPipes()\n    newPipe2 = getRandomPipes()\n    newPipe3 = getRandomPipes()\n    # We make these 2 separate list of upper and lower pipes to recognize bird collision with a pipe\n    # List of inverted Pipes/upper pipes, used to store this part: {\"x\": pipeX, \"y\": y1} for each of the 3 new pipes",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "getRandomPipes",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def getRandomPipes():\n    # gap variable is the gap between 1 vertical and 1 inverted pipe\n    # We decide that the gap should be 3*height of bird\n    # Using this we can control difficulty level\n    # If you want to increase difficulty level, then reduce gap\n    gap = GAME_IMAGES[\"player\"].get_height()*3\n    # Now lets generate coordinates of 1 vertical pipe(not the inverted one)\n    # lets call the coordinates of vertical pipe x2,y2\n    # MINIMUM height of the vertical pipe should be gap\n    # as say we dont have any inverted pipe, then we need minumum gap for bird to go through",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "SCREEN_WIDTH",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "SCREEN_WIDTH = 1400\nSCREEN_HEIGHT = 700\nSCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "peekOfCode": "SCREEN_WIDTH = 1400\nSCREEN_HEIGHT = 700\nSCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Number of frames per second\n# If a lot of frames pass though in front of our eyes then we think that it is moving smoothly\n# But more the FPS, more load on computer",
         "detail": "main",
         "documentation": {}
     },
@@ -38,7 +82,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "SCREEN_HEIGHT = 700\nSCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "peekOfCode": "SCREEN_HEIGHT = 700\nSCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Number of frames per second\n# If a lot of frames pass though in front of our eyes then we think that it is moving smoothly\n# But more the FPS, more load on computer\n# but if load on computer less than game experience will be bad",
         "detail": "main",
         "documentation": {}
     },
@@ -47,7 +91,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "SCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "peekOfCode": "SCREEN = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])\n# To make group of all images as dictionary\nGAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Number of frames per second\n# If a lot of frames pass though in front of our eyes then we think that it is moving smoothly\n# But more the FPS, more load on computer\n# but if load on computer less than game experience will be bad\nFPS = 30",
         "detail": "main",
         "documentation": {}
     },
@@ -56,7 +100,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Functions",
+        "peekOfCode": "GAME_IMAGES = {}\n# To make group of all audios as dictionary\nGAME_SOUNDS = {}\n# Number of frames per second\n# If a lot of frames pass though in front of our eyes then we think that it is moving smoothly\n# But more the FPS, more load on computer\n# but if load on computer less than game experience will be bad\nFPS = 30\n# Coordinates of bird\nplayerX = SCREEN_WIDTH/5",
         "detail": "main",
         "documentation": {}
     },
@@ -65,7 +109,34 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_SOUNDS = {}\n# Functions\n# Main Program",
+        "peekOfCode": "GAME_SOUNDS = {}\n# Number of frames per second\n# If a lot of frames pass though in front of our eyes then we think that it is moving smoothly\n# But more the FPS, more load on computer\n# but if load on computer less than game experience will be bad\nFPS = 30\n# Coordinates of bird\nplayerX = SCREEN_WIDTH/5\nplayerY = SCREEN_HEIGHT/2\n# Functions",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "FPS",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "FPS = 30\n# Coordinates of bird\nplayerX = SCREEN_WIDTH/5\nplayerY = SCREEN_HEIGHT/2\n# Functions\n# Method to display welcome screen\ndef welcomeScreen():\n    # Now since when we run this file, a screen appears for a second and then disappears\n    # So to prevent that, we will use an infinite while loop\n    while True:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "playerX",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "playerX = SCREEN_WIDTH/5\nplayerY = SCREEN_HEIGHT/2\n# Functions\n# Method to display welcome screen\ndef welcomeScreen():\n    # Now since when we run this file, a screen appears for a second and then disappears\n    # So to prevent that, we will use an infinite while loop\n    while True:\n        # 1 Background\n        SCREEN.blit(GAME_IMAGES[\"background\"], (0,0))",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "playerY",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "playerY = SCREEN_HEIGHT/2\n# Functions\n# Method to display welcome screen\ndef welcomeScreen():\n    # Now since when we run this file, a screen appears for a second and then disappears\n    # So to prevent that, we will use an infinite while loop\n    while True:\n        # 1 Background\n        SCREEN.blit(GAME_IMAGES[\"background\"], (0,0))\n        # 2 Base",
         "detail": "main",
         "documentation": {}
     },
@@ -74,7 +145,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES[\"background\"] =  pygame.image.load(\"image/background.png\").convert_alpha()\nGAME_IMAGES[\"base\"] =  pygame.image.load(\"image/base.png\").convert_alpha()\n# Here our player is bird\nGAME_IMAGES[\"player\"] =  pygame.image.load(\"image/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),",
+        "peekOfCode": "GAME_IMAGES[\"background\"] =  pygame.image.load(\"images/background.png\").convert_alpha()\nGAME_IMAGES[\"base\"] =  pygame.image.load(\"images/base.png\").convert_alpha()\n# Here our player is bird\nGAME_IMAGES[\"player\"] =  pygame.image.load(\"images/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"images/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"images/0.png\").convert_alpha(),\n    pygame.image.load(\"images/1.png\").convert_alpha(),\n    pygame.image.load(\"images/2.png\").convert_alpha(),",
         "detail": "main",
         "documentation": {}
     },
@@ -83,7 +154,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES[\"base\"] =  pygame.image.load(\"image/base.png\").convert_alpha()\n# Here our player is bird\nGAME_IMAGES[\"player\"] =  pygame.image.load(\"image/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),",
+        "peekOfCode": "GAME_IMAGES[\"base\"] =  pygame.image.load(\"images/base.png\").convert_alpha()\n# Here our player is bird\nGAME_IMAGES[\"player\"] =  pygame.image.load(\"images/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"images/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"images/0.png\").convert_alpha(),\n    pygame.image.load(\"images/1.png\").convert_alpha(),\n    pygame.image.load(\"images/2.png\").convert_alpha(),\n    pygame.image.load(\"images/3.png\").convert_alpha(),",
         "detail": "main",
         "documentation": {}
     },
@@ -92,7 +163,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES[\"player\"] =  pygame.image.load(\"image/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),\n    pygame.image.load(\"image/4.png\").convert_alpha(),\n    pygame.image.load(\"image/5.png\").convert_alpha(),",
+        "peekOfCode": "GAME_IMAGES[\"player\"] =  pygame.image.load(\"images/bird.png\").convert_alpha()\nGAME_IMAGES[\"message\"] =  pygame.image.load(\"images/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"images/0.png\").convert_alpha(),\n    pygame.image.load(\"images/1.png\").convert_alpha(),\n    pygame.image.load(\"images/2.png\").convert_alpha(),\n    pygame.image.load(\"images/3.png\").convert_alpha(),\n    pygame.image.load(\"images/4.png\").convert_alpha(),\n    pygame.image.load(\"images/5.png\").convert_alpha(),",
         "detail": "main",
         "documentation": {}
     },
@@ -101,7 +172,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES[\"message\"] =  pygame.image.load(\"image/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),\n    pygame.image.load(\"image/4.png\").convert_alpha(),\n    pygame.image.load(\"image/5.png\").convert_alpha(),\n    pygame.image.load(\"image/6.png\").convert_alpha(),",
+        "peekOfCode": "GAME_IMAGES[\"message\"] =  pygame.image.load(\"images/message.png\").convert_alpha()\n# Let's make a group for all numbers( 0 to 9 ):=> tuple\nGAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"images/0.png\").convert_alpha(),\n    pygame.image.load(\"images/1.png\").convert_alpha(),\n    pygame.image.load(\"images/2.png\").convert_alpha(),\n    pygame.image.load(\"images/3.png\").convert_alpha(),\n    pygame.image.load(\"images/4.png\").convert_alpha(),\n    pygame.image.load(\"images/5.png\").convert_alpha(),\n    pygame.image.load(\"images/6.png\").convert_alpha(),",
         "detail": "main",
         "documentation": {}
     },
@@ -110,7 +181,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"image/0.png\").convert_alpha(),\n    pygame.image.load(\"image/1.png\").convert_alpha(),\n    pygame.image.load(\"image/2.png\").convert_alpha(),\n    pygame.image.load(\"image/3.png\").convert_alpha(),\n    pygame.image.load(\"image/4.png\").convert_alpha(),\n    pygame.image.load(\"image/5.png\").convert_alpha(),\n    pygame.image.load(\"image/6.png\").convert_alpha(),\n    pygame.image.load(\"image/7.png\").convert_alpha(),\n    pygame.image.load(\"image/8.png\").convert_alpha(),",
+        "peekOfCode": "GAME_IMAGES[\"numbers\"] = (\n    pygame.image.load(\"images/0.png\").convert_alpha(),\n    pygame.image.load(\"images/1.png\").convert_alpha(),\n    pygame.image.load(\"images/2.png\").convert_alpha(),\n    pygame.image.load(\"images/3.png\").convert_alpha(),\n    pygame.image.load(\"images/4.png\").convert_alpha(),\n    pygame.image.load(\"images/5.png\").convert_alpha(),\n    pygame.image.load(\"images/6.png\").convert_alpha(),\n    pygame.image.load(\"images/7.png\").convert_alpha(),\n    pygame.image.load(\"images/8.png\").convert_alpha(),",
         "detail": "main",
         "documentation": {}
     },
@@ -119,7 +190,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_IMAGES[\"pipe\"] =  (\n    # Upper pipe: Just give 180 degree rotation\n    pygame.transform.rotate(pygame.image.load(\"image/pipe.png\").convert_alpha(), 180),\n    # Lower pipe\n    pygame.image.load(\"image/pipe.png\").convert_alpha()\n)\n# Add all audios as key value pairs to dictionary GAME_SOUNDS\nGAME_SOUNDS[\"die\"] = pygame.mixer.Sound(\"audio/die.mp3\")\nGAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "peekOfCode": "GAME_IMAGES[\"pipe\"] =  (\n    # Upper pipe: Just give 180 degree rotation\n    pygame.transform.rotate(pygame.image.load(\"images/pipe.png\").convert_alpha(), 180),\n    # Lower pipe\n    pygame.image.load(\"images/pipe.png\").convert_alpha()\n)\n# Add all audios as key value pairs to dictionary GAME_SOUNDS\nGAME_SOUNDS[\"die\"] = pygame.mixer.Sound(\"audio/die.mp3\")\nGAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
         "detail": "main",
         "documentation": {}
     },
@@ -128,7 +199,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_SOUNDS[\"die\"] = pygame.mixer.Sound(\"audio/die.mp3\")\nGAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "peekOfCode": "GAME_SOUNDS[\"die\"] = pygame.mixer.Sound(\"audio/die.mp3\")\nGAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")\n# Pasting images on screen is called Blit in technical terms\n# it is important to maintain the order in which we paste images on screen\n# say if 1st i paste small bird image on screen and then paste big background image\n# then we would not be able to see the bird\n# Coordinates of Base\nbaseX = 0\nbaseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()",
         "detail": "main",
         "documentation": {}
     },
@@ -137,7 +208,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "peekOfCode": "GAME_SOUNDS[\"fly\"] = pygame.mixer.Sound(\"audio/fly.flac\")\nGAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")\n# Pasting images on screen is called Blit in technical terms\n# it is important to maintain the order in which we paste images on screen\n# say if 1st i paste small bird image on screen and then paste big background image\n# then we would not be able to see the bird\n# Coordinates of Base\nbaseX = 0\nbaseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message",
         "detail": "main",
         "documentation": {}
     },
@@ -146,7 +217,43 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "GAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")",
+        "peekOfCode": "GAME_SOUNDS[\"point\"] = pygame.mixer.Sound(\"audio/point.mp3\")\n# Pasting images on screen is called Blit in technical terms\n# it is important to maintain the order in which we paste images on screen\n# say if 1st i paste small bird image on screen and then paste big background image\n# then we would not be able to see the bird\n# Coordinates of Base\nbaseX = 0\nbaseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "baseX",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "baseX = 0\nbaseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "baseY",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "baseY = SCREEN_HEIGHT - GAME_IMAGES[\"base\"].get_height()\n# Coordinates of message\nmessageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "messageX",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "messageX = SCREEN_WIDTH/2 - GAME_IMAGES[\"message\"].get_width()/2\nmessageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "messageY",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "messageY = SCREEN_HEIGHT/2 - GAME_IMAGES[\"message\"].get_height()/2\n# Call welcomeScreen() method to display welcome message\nwelcomeScreen()\n# Method that contains all the logic of the game\n# Like with what speed bird will fly, how many pipes would come, what would be distance between each pipe\ngameLoop()",
         "detail": "main",
         "documentation": {}
     }

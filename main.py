@@ -31,15 +31,6 @@ FPS = 30
 playerX = SCREEN_WIDTH/5
 playerY = SCREEN_HEIGHT/2
 
-
-
-
-
-
-
-
-
-
 # Functions
 # Method to display welcome screen
 def welcomeScreen():
@@ -101,21 +92,21 @@ def gameLoop():
     upperPipes = [
         {"x": SCREEN_WIDTH, "y": newPipe1[0]["y"]},
         {"x": SCREEN_WIDTH + SCREEN_WIDTH/3, "y": newPipe2[0]["y"]},
-        {"x": SCREEN_WIDTH + SCREEN_WIDTH/0.75, "y": newPipe3[0]["y"]},
+        {"x": SCREEN_WIDTH + SCREEN_WIDTH/0.6, "y": newPipe3[0]["y"]},
     ]
     
     # List of lower pipes
     lowerPipes = [
         {"x": SCREEN_WIDTH, "y": newPipe1[1]["y"]},
         {"x": SCREEN_WIDTH + SCREEN_WIDTH/3, "y": newPipe2[1]["y"]},
-        {"x": SCREEN_WIDTH + SCREEN_WIDTH/0.75, "y": newPipe3[1]["y"]},
+        {"x": SCREEN_WIDTH + SCREEN_WIDTH/0.6, "y": newPipe3[1]["y"]},
     ]
     
     # variable to store score of the player
     score = 0
     
     # speed with which pipes would be moving towards bird on x-axis
-    pipeSpeedX = -5
+    pipeSpeedX = -10
     
     # Speed with which bird would fall down or in other words, also called Gravity or Speed in y direction
     playerSpeedY = -9
@@ -182,29 +173,47 @@ def gameLoop():
         # Moving the pipes
         
         # for this we will use zip function
-        for upperPipe, lowerPipe in zip(upperPipes, lowerPipes):
-            upperPipe["x"] = upperPipe["x"] - pipeSpeedX
-            lowerPipe["x"] = lowerPipe["x"] - pipeSpeedX
+        for upperPipe,lowerPipe in zip(upperPipes, lowerPipes):
+            # We add pipeSpeedX as it is a negative value
+            upperPipe["x"] = upperPipe["x"] + pipeSpeedX
+            lowerPipe["x"] = lowerPipe["x"] + pipeSpeedX
+            
+        # Adding new pipes
+        # When to add new pipe
+        # If we don't use pipeSpeedX here than on increasing pipe's speed, game will not work properly
+        # we use abs() method as pipeSpeedX is negative
+        if 0 < upperPipes[0]["x"] <= abs(pipeSpeedX):
+            newPipe = getRandomPipes()
+            # from the newly generated pipe add its inverted(upper part) to upperPipes list
+            upperPipes.append(newPipe[0])
+            # from the newly generated pipe add its vertical(lower part) to lowerPipes list
+            lowerPipes.append(newPipe[1])
+            
+        # Removing old pipes
+        # if pipe has already crossed the left most end of screen than pop that pipe from list
+        if upperPipes[0]["x"] < 0:
+            upperPipes.pop(0)
+            lowerPipes.pop(0)
         
         # Blit on screen
         
         # 1 Background
         SCREEN.blit(GAME_IMAGES["background"], (0,0))
 
-        # 2 Base
-        SCREEN.blit(GAME_IMAGES["base"], (baseX, baseY))
-
         # 3 bird
         SCREEN.blit(GAME_IMAGES["player"], (playerX, playerY))
         
         # Let's blit the pipes on screen
-        for upperPipe, lowerPipe in zip(upperPipes, lowerPipes):
+        for upperPipe,lowerPipe in zip(upperPipes, lowerPipes):
             # blit the upper pipe(Inverted pipe)
-            SCREEN.blit(GAME_IMAGES["pipe"][0], (upperPipe["x"], upperPipe["y"] ))
+            SCREEN.blit(GAME_IMAGES["pipe"][0], (upperPipe["x"], upperPipe["y"]))
             # blit the lower pipe(Vertical pipe)
-            SCREEN.blit(GAME_IMAGES["pipe"][1], (lowerPipe["x"], lowerPipe["y"] ))
+            SCREEN.blit(GAME_IMAGES["pipe"][1], (lowerPipe["x"], lowerPipe["y"]))
         
-    
+        # 2 Base
+        # We print base afterwards so that pipes does not get placed on top of base
+        SCREEN.blit(GAME_IMAGES["base"], (baseX, baseY))
+        
         # update the screen
         pygame.display.update()
         
