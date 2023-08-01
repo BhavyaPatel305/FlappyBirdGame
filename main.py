@@ -229,17 +229,6 @@ def gameLoop():
         # 3 bird
         SCREEN.blit(GAME_IMAGES["player"], (playerX, playerY))
         
-        # Let's blit the pipes on screen
-        for upperPipe,lowerPipe in zip(upperPipes, lowerPipes):
-            # blit the upper pipe(Inverted pipe)
-            SCREEN.blit(GAME_IMAGES["pipe"][0], (upperPipe["x"], upperPipe["y"]))
-            # blit the lower pipe(Vertical pipe)
-            SCREEN.blit(GAME_IMAGES["pipe"][1], (lowerPipe["x"], lowerPipe["y"]))
-        
-        # 2 Base
-        # We print base afterwards so that pipes does not get placed on top of base
-        SCREEN.blit(GAME_IMAGES["base"], (baseX, baseY))
-        
         # Blit the score
         scoreDigits = [int(i) for i in str(score)]
         # Coordinates of score, like at which position to blit the score
@@ -252,6 +241,17 @@ def gameLoop():
             # so first 1 is printed, then we increment scoreX by the width of the digit being blit
             # so that 2 will not be printed on top of 1, it will be printed after 1
             scoreX += GAME_IMAGES["numbers"][digit].get_width()
+        
+        # Let's blit the pipes on screen
+        for upperPipe,lowerPipe in zip(upperPipes, lowerPipes):
+            # blit the upper pipe(Inverted pipe)
+            SCREEN.blit(GAME_IMAGES["pipe"][0], (upperPipe["x"], upperPipe["y"]))
+            # blit the lower pipe(Vertical pipe)
+            SCREEN.blit(GAME_IMAGES["pipe"][1], (lowerPipe["x"], lowerPipe["y"]))
+        
+        # 2 Base
+        # We print base afterwards so that pipes does not get placed on top of base
+        SCREEN.blit(GAME_IMAGES["base"], (baseX, baseY))
         
         # update the screen
         pygame.display.update()
