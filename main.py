@@ -32,6 +32,7 @@ playerX = SCREEN_WIDTH/5
 playerY = SCREEN_HEIGHT/2
 
 # Functions
+
 # Method to display welcome screen
 def welcomeScreen():
     # Now since when we run this file, a screen appears for a second and then disappears
@@ -205,7 +206,7 @@ def gameLoop():
         for pipe in upperPipes:
             pipeCenterX = pipe["x"] + (GAME_IMAGES["pipe"][0].get_width()/2)
             
-            if pipeCenterX <= playerCenterX < playerX + abs(pipeSpeedX):
+            if pipeCenterX <= playerCenterX < pipeCenterX + abs(pipeSpeedX):
                 score += 1
                 # Play point sound which signifies that score has increased
                 GAME_SOUNDS["point"].play()
@@ -239,6 +240,19 @@ def gameLoop():
         # We print base afterwards so that pipes does not get placed on top of base
         SCREEN.blit(GAME_IMAGES["base"], (baseX, baseY))
         
+        # Blit the score
+        scoreDigits = [int(i) for i in str(score)]
+        # Coordinates of score, like at which position to blit the score
+        scoreX = SCREEN_WIDTH/1.3
+        scoreY = SCREEN_HEIGHT/2
+        # start blitting the score on the screen
+        for digit in scoreDigits:
+            SCREEN.blit(GAME_IMAGES["numbers"][digit], (scoreX,scoreY))
+            # Lets say score is 123
+            # so first 1 is printed, then we increment scoreX by the width of the digit being blit
+            # so that 2 will not be printed on top of 1, it will be printed after 1
+            scoreX += GAME_IMAGES["numbers"][digit].get_width()
+        
         # update the screen
         pygame.display.update()
         
@@ -246,8 +260,6 @@ def gameLoop():
         # By passing this command, pygame understands that it has to pass these many frames
         pygame.time.Clock().tick(FPS)
     
-    
-
 # We create a method named getRandomPipe() which will give us random pair of pipes
 def getRandomPipes():
     # gap variable is the gap between 1 vertical and 1 inverted pipe
@@ -330,9 +342,6 @@ def isHit(playerX, playerY, upperPipes, lowerPipes):
     # 4: DIDN'T HIT ANYTHING
     return False
         
-    
-    
-
 # Main Program
 
 # Initialize pygame
